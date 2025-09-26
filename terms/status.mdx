@@ -1,0 +1,37 @@
+---
+title: Status
+description: Task, Milestone, and Issue Statuses
+icon: circle-check
+iconType: duotone
+---
+The options for Task Status are:
+
+| Status         | Condition                                                                                                                         | Legacy CPM equivelant | Kanban Equivelant |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------- |
+| Not Ready      | Blocked by dependencies                                                                                                           | Not Started           | Backlog           |
+| Ready to Start | Not blocked by dependencies                                                                                                       | Not Started           | Unstarted         |
+| Started        | Manually set by user                                                                                                              | In Prorgress          | Started           |
+| Finished       | Manually set by user                                                                                                              | Completed             | Completed         |
+| Completed      | all blocked have started (series) or finished (parallel)                                                                       | Completed             | Completed         |
+| Canceled       | Tasks and Issues are never deleted, they're just canceled and play no role in [calculating schedules](/calculating_schedules). | N/A                   | Canceled          |
+## Milestone Status
+
+Milestones only have two statuses, that are automatically
+
+| Status   | Condition                                                  |
+| -------- | ---------------------------------------------------------- |
+| At Risk  | The deadline is on or after the [**late date**](/terms/late_dates) |
+| On Track | The deadline is on or before the target date               |
+| Done     | All blockers are Finished                                  |
+
+## Issue Status
+
+There are two types of issues: planned an unplanned. Unplanned issues are the ones that 
+
+
+| Status      | Condition                                                                                             |
+| ----------- | ----------------------------------------------------------------------------------------------------- |
+| Identified  | The default when issues are created                                                                   |
+| In Progress | An Expected date is identified                                                                        |
+| Cleared     | Manually Set by User                                                                                  |
+| Canceled    | Like Tasks, Issues are never deleted, they're just canceled and play no role in calculating schedules |

@@ -1,0 +1,161 @@
+---
+title: Calculating Schedules
+description: Early and late dates
+---
+
+Calculating schedules in LeanCPM is slightly different than in legacy CPM.
+
+## Main Differences from legacy CPM
+
+1. There is no concept of constraints (As soon as possible, Start no earlier than, etc.)
+2. There is no data date, only Today
+3. No option for “Retained Logic”. Use issues to stop work.
+4. Every milestone has a target date, used to calculate the earliest and latest dates by which all tasks can occur.
+5. Nominal dates (default Start & Finish) use manually entered ‘Target’ dates instead of early dates.
+6. There are only two types of dependencies (relationships)
+	- **Series**: A blocker must finish before the blocked task can start; lag is not allowed
+	- **Parallel**: A start-start *and* finish-finish relationship with an optional lag
+7. Milestones can only be in series with their blockers and those they blocked.
+8. Schedules are calculated in days, not minutes or seconds.
+9. Issues are used instead of constraints to limit a date.
+
+
+## What exactly is calculated?
+
+| Field              | Type     | Tasks | Issues | Milestones |
+| ------------------ | -------- | ----- | ------ | ---------- |
+| `early_start`      | date     | ✅     |        | ✅          |
+| `early_finish`     | date     | ✅     |        | ✅          |
+| `late_start`       | date     | ✅     |        | ✅          |
+| `late_finish`      | date     | ✅     |        | ✅          |
+| `deadline`         | date     |       |        | ✅          |
+| `priority`         | enum     | ✅     | ✅      |            |
+| `total_float`      | duration | ✅     | ✅      | ✅          |
+| `free_float_start` | duration | ✅     |        |            |
+| `free_float_end`   | duration | ✅     | ✅      |            |
+| `drag`             | duration | ✅     |        |            |
+
+<Danger>
+#### Legacy CPM
+ Legacy CPM will automatically assign the `early_start` and `early_finish` to the nominal start and finish dates, respectively. This is not the case in LeanCPM, instead it is the expected dates, the manual, user-generated dates, or actual dates that are assigned to the start and finish dates. 
+</Danger>
+
+---
+## What is ignored
+
+Anything that has a “canceled” [status](/terms/status) is not considered in the calculation.
+
+---
+## Needs update
+
+Since there is no data date and therefore no “progress spotlight”, we need a way to identify tasks whose progress may be stale and need to be updated. Fortunately, this is easy.
+
+First, any unstarted task with a target start before today needs an update.
+
+Second, any unfinished task with a target finish date that is before the current date needs an update.
+
+--- 
+
+## What is required
+
+#### Earliest dates
+The earliest a task can start is right after the earliest its *driving* blocker can finish (or start if it’s in parallel).
+
+To calculate the earliest a task can start, we must examine a given task’s blocker, then its blocker, and so on, until we eventually reach a task without a blocker. Since tasks in LeanCPM don’t have constraints, it’s impossible to determine the earliest a task can occur without a milestone or an issue that initiates the dependency path.
+
+> What about tasks that have [cleared blockers](terms/dependencies#cleared-blockers)? 
+
+These are considered `Ready to Start` and have an early start as of the current date or the Target Date, whichever is earlier (see 'Needs Update' above).
+
+> What about tasks with no blockers at all?
+
+Unless they are already started or their Target Start is the current date, it is impossible to figure out the early start.
+
+#### Latest dates
+
+All tasks must have blocked tasks that eventually lead to a Milestone; otherwise, it’ll be impossible to determine the latest start and finish dates.
+
+Therefore, in a given [dependency path](terms/dependencies#dependency-path), it’ll be impossible to calculate the total float, drag, and priority of the tasks that are not between a cleared blocker, milestone, or issue.
+
+--- 
+## Forwards Pass - Calculate Early Dates
+
+Early dates are the earliest a task can start.
+
+### Step 1: Unstarted Tasks with no blockers
+
+#### A. Target Start is after Today
+
+We can’t assume these can start earlier than the user's expected start time.
+
+1. Clear Early Dates
+
+#### B. Target Start is before Today, Finish is after
+
+1. Set `early_finish = target_finish` (user-generated)
+
+#### C. Milestones before Today
+
+1. Do nothing
+
+### Step 2: Blocked Tasks & Milestones from previous step
+
+Now that we’ve identified the early dates for a handful of tasks, we can begin *calculating* early dates for the tasks they’re blocking.
+
+#### A. For each in series
+
+These tasks can’t start until the tasks blocking them are finished.
+
+1. Set task’s `early_start` to blocker’s `early_finish + 1d` (work day)
+2. Set `eary_finish = early_start + duration`
+3. if the task's `early_start` or `early_finish` is blank
+
+#### B. For each in parallel
+
+These tasks can’t start until the tasks blocking them also start; sometimes, there is a lag. Since the blocked task can have a shorter duration than its blocker, its early dates are calculated a bit differently.
+
+1. Set task’s `early_start` to blocker’s `early_start` + `lag` 
+2. Set task’s `early_finish` to the *later* of:
+	-  Blocker’s `early_finish` (do not add the lag) OR 
+	-  Task's `early_start + duration`
+3. Milestones cannot be in parallel with other Tasks or Milestones
+
+### Step 3: Repeat Step 2 until there are no more blocked tasks
+
+
+### Step 4: Constraints
+
+Iterate through each constraint bucket, find any conflicts. If a conflict exists 
+
+### Step 5: Move on to Backwards Pass
+
+---
+## Backwards Pass - Calculate Late dates.
+
+Late dates are the latest a task can occur.
+
+<Callout title="Unknown Priority" type="error">
+ Any task or issue that doesn't eventually lead to a milestone has an unknown priority
+</Callout>
+1. Set late dates to null
+2. Find all tasks that do not block anything (aka tasks that do not have a successor)
+	a. for each:
+		Set `priority` to `unknown`
+		Set  `late_finish` to `finish` (user-generated)
+		Set `late_start` = `late_finish` - `duration`
+		
+
+
+--- 
+
+## Free Float calculations
+
+--- 
+
+## Total Float calculations
+
+---
+
+## Drag Calculations
+
+

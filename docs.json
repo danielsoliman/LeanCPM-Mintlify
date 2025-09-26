@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "LeanCPM",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,58 +11,63 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Overview",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Get started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "vs-lean",
+              "vs-cpm"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Organizing your schedule",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "organizing-your-schedule/areas",
+              "organizing-your-schedule/checkpoints",
+              "organizing-your-schedule/goals",
+              "organizing-your-schedule/tags",
+              "organizing-your-schedule/timeline-matrix",
+              "organizing-your-schedule/wbs"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Guides",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Calculating schedules",
             "pages": [
-              "api-reference/introduction"
+              "calculating_schedules"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "tab": "Terms",
+        "groups": [
           {
-            "group": "Endpoint examples",
+            "group": "LeanCPM Terms",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "terms/activity_log",
+              "terms/actual_dates",
+              "terms/ainticipated_dates",
+              "terms/constraints",
+              "terms/dependencies",
+              "terms/drag",
+              "terms/duration",
+              "terms/early_dates",
+              "terms/issue",
+              "terms/last_scheduled",
+              "terms/late_dates",
+              "terms/milestone",
+              "terms/nominal_dates",
+              "terms/priority",
+              "terms/status",
+              "terms/target_dates",
+              "terms/task"
             ]
           }
         ]
@@ -71,12 +76,12 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
+          "anchor": "Sponsor",
           "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "icon": "hands-holding-dollar"
         },
         {
-          "anchor": "Blog",
+          "anchor": "Newsletter",
           "href": "https://mintlify.com/blog",
           "icon": "newspaper"
         }
@@ -91,26 +96,26 @@
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:help@LeanCPM.org"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
+      "label": "Weekly tips",
       "href": "https://dashboard.mintlify.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

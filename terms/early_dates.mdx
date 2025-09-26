@@ -1,0 +1,37 @@
+---
+title: Early Dates
+description: The soonest possible date a task can start or finish
+icon: hourglass-start
+iconType: duotone
+---
+These values are [calculated](/calculating_schedules) based on durations and dependencies between all tasks in a project.
+
+<Warning>
+#### As soon as possible
+ Legacy CPM set's nominal dates to equal [early](/terms/early_dates) dates. This means it wants you to start everything as soon as logically possible, with no regard to resource constraints.
+
+This severely limits the flexibility of your schedule. What most people do to account for this is create logic that shouldn't exist. 
+
+For example, they'll put a "Final Paint" task to succeed another "Final Paint" task, not because one can't start until the other is finished, but because there's only one paint crew and they can only work on one area at a time. The flaw here is the initial plan had Area 1 painted before Area 2 but, since its construction things happen, and Area 2 might eventually be ready first, this typically goes unnoticed until its too late.
+</Warning>
+
+## Early Start
+
+`early_start`
+
+The earliest a task can start is based on when its dependencies are finished or started, depending on the dependency type.
+
+## Early Finish
+
+`early_finish`
+
+The earliest a task can *finish* is based on its `early_start` and [duration](/terms/duration).
+
+## Milestones
+
+Unlike Tasks, [Milestones](/terms/milestone) have a single `early_date` field. This is the soonest a Milestone can occur.
+
+<Danger>
+#### Legacy CPM
+ In LeanCPM, there are no “Planned Dates” or “Original Dates“ .
+</Danger>
