@@ -77,12 +77,12 @@
       "anchors": [
         {
           "anchor": "Sponsor",
-          "href": "https://mintlify.com/docs",
+          "href": "mailto:help@LeanCPM.org?subject=I%20want%20to%20sponsor%20LeanCPM",
           "icon": "hands-holding-dollar"
         },
         {
           "anchor": "Newsletter",
-          "href": "https://mintlify.com/blog",
+          "href": "https://tally.so/r/mY1zP0",
           "icon": "newspaper"
         }
       ]
@@ -102,7 +102,7 @@
     "primary": {
       "type": "button",
       "label": "Weekly tips",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://tally.so/r/mY1zP0"
     }
   },
   "contextual": {
