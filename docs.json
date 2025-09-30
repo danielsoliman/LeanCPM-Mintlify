@@ -123,5 +123,18 @@
       "github": "https://github.com/danielsoliman",
       "linkedin": "https://www.linkedin.com/in/dfahmi/"
     }
+  },
+  "seo": {
+    "metatags": {
+      "author": "Daniel Soliman",
+      "description": "LeanCPM is a lightweight project management methodology that combines the principles of Lean and Critical Path Method (CPM) to help teams efficiently plan, execute, and deliver projects on time and within budget.",
+      "keywords": "LeanCPM, Lean, Critical Path Method, CPM, project management, scheduling, task management, project planning, productivity, efficiency",
+      "og:title": "LeanCPM Documentation",
+      "og:description": "LeanCPM is a lightweight project management methodology that combines the principles of Lean and Critical Path Method (CPM) to help teams efficiently plan, execute, and deliver projects on time and within budget.",
+      "og:type": "website",
+      "copyright": "2025 Daniel Soliman",
+      "referrer": "origin",
+      "viewport": "width=device-width, initial-scale=1.0"
+    }
   }
 }
