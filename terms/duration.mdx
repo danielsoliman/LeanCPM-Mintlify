@@ -1,22 +1,46 @@
 ---
-title: Duration
-description: How long a task takes from start to finish
-icon: timer
-iconType: duotone
+title: "Duration"
+description: "How long a task takes from start to finish"
+icon: "timer"
+iconType: "duotone"
 ---
 
 We continue to use the CPM definitions. There are 3 durations:
 
-## Target Duration 
+## Target Duration
 
-This is the duration manually set by a planner, its the anticipated number of days the task will be worked on from start to finish. Excludes non-working days (like weekends and holidays) and doesn't anticipate any issues. The Anticipated Duration cannot be changed after the task as Started.
+<Info>
+  This is known as Planned Duration in Legacy CPM.
+</Info>
+
+This is the duration manually set by a planner; it's the anticipated number of days the task will be worked on <Tooltip tip="Target Start to Target Finish">from start to finish</Tooltip>. Excludes non-working days (like weekends and holidays) and doesn't anticipate any issues. The Target Duration cannot be changed after the task has started.
 
 ## Days on Task
 
-The number of days between the Actual Start and Actual Finish, if the Task hasn't finished yet then its the number of days between the Actual Start and Today. If there is no actual start, then this value is 0.
+<Info>
+  This is known as `Actual Duration` in Legacy CPM.
+</Info>
+
+The number of days between the Actual Start and Actual Finish. 
+
+If the Task hasn't finished yet, then it's the number of days between the Actual Start and Today. 
+
+If there is no actual start, then this value is 0.
 
 ## Days to Finish
 
-The number of days between today and Actual Finish. If the task hasn't started yet, it'll be the number of days between Actual Start and Actual Finish. If the task is finished then this value is 0.
+<Info>
+  This is known as `Remaining Duration` in Legacy CPM.
+</Info>
 
-## Actual Duration
+The number of days between today and Target Finish. If the task hasn't started yet, it'll be the number of days between the <Tooltip tip="Planned Start">Target Start</Tooltip> and <Tooltip tip="Planned Finish">Target Finish</Tooltip> dates. If the task is `Finished`, then this value is 0.
+
+## Total Duration
+
+<Info>
+  This is known as `At Completion Duration` in Legacy CPM.
+</Info>
+
+$TotalDuration = Days On Task + Days To Finish$
+
+Note that the total duration is the same as the number of work days between Nominal Start and Nominal Finish.

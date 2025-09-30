@@ -1,6 +1,50 @@
 ---
-title: Actual Dates
-description: The dates tasks actually started and finished
-icon: calendar-check
-iconType: duotone
+title: "Actual Dates"
+description: "The dates a task, issue, or milestone was marked as Started or Finished."
+icon: "calendar-check"
+iconType: "duotone"
 ---
+
+Let's start this section a little differently. Those who are accustomed to "defensive scheduling", where the objective isn't to finish ahead of schedule or under budget, but instead to set up everyone else to fail so that it's clear we weren't the ones who failed, will find the way LeanCPM handles actual dates a bit confusing.
+
+The way Legacy CPM works, in that we collect progress data and then fix what's broken, is akin to driving by looking through the rear-view mirror.
+
+LeanCPM, because it's [synchronous](https://leancpm.org/#synchronous-communication), doesn't have that problem. The schedule is always up-to-date, so there is no burden to update it.
+
+It's best to ask a simple rhetorical question:
+
+> Do you prefer to get paid when you install materials, or when the general contractor _notices_ that you installed materials?
+
+Another way to put it: if you've completed a task but nobody knows you've completed it, does it matter?
+
+# Historical Data
+
+Which historical data would you trust more?
+
+## Scenario 1
+
+The project team uses a system that allows them to manually enter the dates a task started and finished, on average, about a week after the fact. They can, and often do (because they rely on week-old memories), change the dates again, months after the fact.
+
+## Scenario 2
+
+The project team utilizes a system to communicate with one another. The way they communicate to others that they've finished a task is by marking it as finished within that system. There is no way to change the date. After all, if they've completed a task and nobody knows they completed it, does it even matter?
+
+# Actual dates don't matter
+
+## Memories aren't reliable
+
+As mentioned above, in Legacy CPM, we go around the room every 2 weeks (at best) and ask foremen or superintendents to jog their memory on when something was completed.
+
+SmartPM's recent study revealed that 45% of all updates included changes to actual dates.
+
+## Suspend and resume
+
+It happens all the time, pipe fitters start work on a task, but then they get called off to work on something else, for a few days or even weeks, before they return to commence work. These situations are seldom reported on in the schedule. If they were, Legacy CPM only permits activities to be suspended and resumed once.
+
+# Percent Complete
+
+## Duration Percent Complete
+
+$DPC = actual Duration / at Completion Duration$
+
+The problem with the duration percent complete is that if you have to adjust your finish date after you've already started, then the duration percent complete was never correct before that point. Since 90% or more of activities have a different `At Completion Duration` than `Planned Duration`
