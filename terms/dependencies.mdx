@@ -62,22 +62,24 @@ Where a task has both:
 2. A path of blocked items (successors) that ultimately leads to a milestone
 
 ```mermaid
-  flowchart LR
-    subgraph subgraph1
-        direction TB
-        top1[top] --> bottom1[bottom]
-    end
-    subgraph subgraph2
-        direction TB
-        top2[top] --> bottom2[bottom]
-    end
-    %% ^ These subgraphs are identical, except for the links to them:
+  gantt
+    title 0 Float
+    dateFormat YYYY-MM-DD
+    axisFormat %d
+    excludes weekends
+    tickInterval 1day
 
-    %% Link *to* subgraph1: subgraph1 direction is maintained
-    outside --> subgraph1
-    %% Link *within* subgraph2:
-    %% subgraph2 inherits the direction of the top-level graph (LR)
-    outside ---> top2
+    section Activity A 
+        Early    :active, ae, 2025-07-01, 5d
+        Late     :al, 2025-07-01, 5d
+    section Activity B
+        Early    :active, be, after ae, 10d
+        Late    :bl, after al, 10d
+    section Activity C
+        Early    :active, ce, after be, 5d
+        Late    :cl, after bl, 5d
+    section Completion Milestone
+        Milestone     :milestone, d
 ```
 
 ## Cleared Blockers
