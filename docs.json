@@ -136,5 +136,10 @@
       "referrer": "origin",
       "viewport": "width=device-width, initial-scale=1.0"
     }
+  },
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_vK8IZv4IXwU0GKijvXrCBt21xviJSbELUDGQJdeth6O"
+    }
   }
 }
