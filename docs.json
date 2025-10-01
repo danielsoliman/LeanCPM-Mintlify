@@ -63,7 +63,7 @@
               "terms/last_scheduled",
               "terms/late_dates",
               "terms/milestone",
-              "terms/nominal_dates",
+              "terms/effective_dates",
               "terms/priority",
               "terms/status",
               "terms/target_dates",

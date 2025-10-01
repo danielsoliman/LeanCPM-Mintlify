@@ -11,7 +11,7 @@ Calculating schedules in LeanCPM is slightly different than in legacy CPM.
 2. There is no data date, only Today
 3. No option for “Retained Logic”. Use issues to stop work.
 4. Every milestone has a target date, used to calculate the earliest and latest dates by which all tasks can occur.
-5. Nominal dates (default Start & Finish) use manually entered ‘Target’ dates instead of early dates.
+5. Effective dates (default Start & Finish) use manually entered ‘Target’ dates instead of early dates.
 6. There are only two types of dependencies (relationships)
 	- **Series**: A blocker must finish before the blocked task can start; lag is not allowed
 	- **Parallel**: A start-start *and* finish-finish relationship with an optional lag
@@ -37,7 +37,7 @@ Calculating schedules in LeanCPM is slightly different than in legacy CPM.
 
 <Danger>
 #### Legacy CPM
- Legacy CPM will automatically assign the `early_start` and `early_finish` to the nominal start and finish dates, respectively. This is not the case in LeanCPM, instead it is the expected dates, the manual, user-generated dates, or actual dates that are assigned to the start and finish dates. 
+ Legacy CPM will automatically assign the `early_start` and `early_finish` to the Effective start and finish dates, respectively. This is not the case in LeanCPM, instead it is the expected dates, the manual, user-generated dates, or actual dates that are assigned to the start and finish dates. 
 </Danger>
 
 ---
